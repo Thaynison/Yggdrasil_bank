@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banco Inter - Login</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Fonte Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilo customizado -->
+  <style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .card {
+    background-color: #fff;
+    border: none;
+  }
+
+  .btn-warning {
+    background-color: #FF8200;
+    border-color: #FF8200;
+  }
+
+  .btn-warning:hover {
+    background-color: #e67300;
+    border-color: #e67300;
+  }
+
+  a.text-warning:hover {
+    text-decoration: underline;
+  }
+
+  </style>
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100" style="font-family: 'Inter', sans-serif;">
+
+  <div class="card p-4 shadow-sm" style="max-width: 360px; width: 100%; border-radius: 1rem;">
+    <div class="text-center mb-4">
+      <img src="img/logo.png" alt="Banco Inter Logo" class="img-fluid" style="max-height: 60px;">
+    </div>
+    <h5 class="text-center mb-4 fw-semibold">Acesse sua conta</h5>
+    <form id="loginForm">
+      <div class="mb-3">
+        <label for="cpf" class="form-label">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" required>
+      </div>
+      <div class="mb-3">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="senha" placeholder="********" required>
+      </div>
+      <button type="submit" class="btn btn-warning w-100 fw-semibold">Entrar</button>
+    </form>
+    <div class="d-flex justify-content-between mt-3">
+      <a href="#" class="text-decoration-none small" data-bs-toggle="modal" data-bs-target="#modalSenha">Esqueci minha senha</a>
+      <a href="#" class="text-decoration-none small text-warning" data-bs-toggle="modal" data-bs-target="#modalConta">Abrir conta</a>
+    </div>    
+  </div>
+
+  <!-- Modal: Esqueci minha senha -->
+  <div class="modal fade" id="modalSenha" tabindex="-1" aria-labelledby="modalSenhaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalSenhaLabel">Recuperar Senha</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3">Informe seu CPF ou e-mail para receber instruções de recuperação.</p>
+          <form>
+            <div class="mb-3">
+              <label for="recuperacao" class="form-label">CPF ou E-mail</label>
+              <input type="text" class="form-control" id="recuperacao" required>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Abrir Conta -->
+  <div class="modal fade" id="modalConta" tabindex="-1" aria-labelledby="modalContaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalContaLabel">Abrir Conta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nomeCompleto" class="form-label">Nome completo</label>
+              <input type="text" class="form-control" id="nomeCompleto" required>
+            </div>
+            <div class="mb-3">
+              <label for="emailConta" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="emailConta" required>
+            </div>
+            <div class="mb-3">
+              <label for="cpfConta" class="form-label">CPF</label>
+              <input type="text" class="form-control" id="cpfConta" required>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Criar Conta</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script de validação -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // impede o envio padrão do formulário
+
+      const cpf = document.getElementById("cpf").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+
+      // CPF e senha válidos
+      const cpfValido = "155.209.637-89";
+      const senhaValida = "2020";
+
+      if (cpf === cpfValido && senha === senhaValida) {
+        window.location.href = "dashboard.html"; // redireciona
+      } else {
+        alert("CPF ou senha inválidos. Tente novamente!");
+      }
+    });
+  </script>
+
+  <script>
+      document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const cpf = document.getElementById("cpf").value;
+      const senha = document.getElementById("senha").value;
+
+      // Apenas simula login para fins de UI
+      if (cpf && senha) {
+        alert("Login simulado com sucesso!");
+      } else {
+        alert("Preencha todos os campos.");
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
